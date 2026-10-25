@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Cost Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>&#9729; Cloud Cost Calculator</h1>
+    <p>Estimate and compare monthly cost on AWS, Azure and Google Cloud</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Your Requirements</h2>
+
+      <label>Server size
+        <select id="size">
+          <option value="small">Small (2 vCPU, 8 GB RAM)</option>
+          <option value="medium">Medium (4 vCPU, 16 GB RAM)</option>
+          <option value="large">Large (8 vCPU, 32 GB RAM)</option>
+        </select>
+      </label>
+
+      <label>Number of servers
+        <input type="number" id="count" value="1" min="1" max="100">
+      </label>
+
+      <label>Hours used per month <span class="hint">(730 = always on)</span>
+        <input type="number" id="hours" value="730" min="1" max="730">
+      </label>
+
+      <label>Storage (GB)
+        <input type="number" id="storage" value="100" min="0">
+      </label>
+
+      <label>Data transfer out (GB per month)
+        <input type="number" id="transfer" value="200" min="0">
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="db"> Add managed database (small)
+      </label>
+
+      <label>USD to INR rate
+        <input type="number" id="rate" value="88" min="1" step="0.5">
+      </label>
+
+      <button id="calc">Calculate</button>
+    </section>
+
+    <section class="card" id="results" hidden>
+      <h2>Estimated Monthly Cost</h2>
+      <div id="bars"></div>
+      <div id="best"></div>
+
+      <table>
+        <thead>
+          <tr><th>Item</th><th>AWS</th><th>Azure</th><th>GCP</th></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Prices are approximate on-demand Linux rates, for learning only. Check the official AWS, Azure and GCP pricing calculators for exact figures.</p>
+    <p>Mini Project: Cloud Computing</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
